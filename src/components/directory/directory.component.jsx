@@ -58,9 +58,8 @@ class Directory extends Component {
                             title={title}
                             imageUrl={imageUrl}
                             size={size}
-                        >
-                        </MenuItem>
-                        )
+                        />
+                    )
                 }
             </div>
         );

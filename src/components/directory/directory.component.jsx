@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // css
-import './directory/styles.scss';
+import './directory.styles.scss';
 
 // component
 import MenuItem from "../menu-item/menu-item.component";

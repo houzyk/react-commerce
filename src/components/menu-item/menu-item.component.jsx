@@ -3,10 +3,10 @@ import React from "react";
 // css
 import './menu-item.styles.scss';
 
-const MenuItem = ({ title, imageUrl }) => {
+const MenuItem = ({ title, imageUrl, size }) => {
     return (
         <div 
-            className="menu-item"
+            className={`menu-item ${size}`}
             style={{
                 backgroundImage: `url(${imageUrl})`
             }}

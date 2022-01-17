@@ -52,7 +52,7 @@ class SignUp extends Component {
 
   handleChange = e => {
     const {name, value} = e.target;
-    this.state({
+    this.setState({
       [name]: value
     })
   }

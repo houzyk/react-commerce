@@ -3,9 +3,12 @@ import React from "react";
 // css
 import './custom-button.styles.scss'
 
-const CustomButton = ({ children, ...other }) => {
+const CustomButton = ({ children, isGoogleSignIn, ...other }) => {
     return (
-        <button className="custom-button" {...other}>
+        <button
+          className={`${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`}
+          {...other}
+        >
             {children}
         </button>
     );

@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// redux
+import { connect } from "react-redux";
+
 // firebase
 import { auth } from "../../firebase/firebase.utils";
 
@@ -55,4 +58,8 @@ const Header = ({ currentUser }) => {
   );
 }
 
-export default Header;
+const mapStatetoProps = (state) => ({
+  currentUser: state.user.currentUser
+})
+
+export default connect(mapStatetoProps)(Header);

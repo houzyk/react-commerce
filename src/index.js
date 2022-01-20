@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, } from "react-router-dom";
 
+// redux
+import { Provider } from "react-redux";
+
 // components
 import App from './App';
 
@@ -10,10 +13,10 @@ import './index.css';
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider>
     <Router>
       <App />
     </Router>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );

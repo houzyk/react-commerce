@@ -9,6 +9,7 @@ import { auth } from "../../firebase/firebase.utils";
 
 // components
 import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 // css
 import './header.styles.scss';
@@ -16,7 +17,7 @@ import './header.styles.scss';
 // assets
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, hidden }) => {
   return (
     <div className="header">
       <Link to="/" className="logo-container">
@@ -58,12 +59,17 @@ const Header = ({ currentUser }) => {
           }
           <CartIcon />
         </div>
+        {
+          hidden ? null:
+          <CartDropdown />
+        }
     </div>
   );
 }
 
-const mapStatetoProps = (state) => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = ({user: {currentUser}, cart: { hidden }}) => ({
+  currentUser,
+  hidden
 })
 
-export default connect(mapStatetoProps)(Header);
+export default connect(mapStateToProps)(Header);

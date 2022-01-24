@@ -2,8 +2,7 @@
 import { connect } from "react-redux";
 import { selectCartItems } from "../../redux/cart/cart.selectors";
 import { useNavigate } from "react-router-dom";
-
-
+import { toggleCartHidden } from "../../redux/cart/cart.actions";
 
 import React from 'react';
 
@@ -17,7 +16,7 @@ import './cart-dropdown.styles.scss';
 export const withRouter = (Component) => {
   const Wrapper = (props) => {
     const history = useNavigate();
-    
+
     return (
       <Component
         history={history}
@@ -25,18 +24,18 @@ export const withRouter = (Component) => {
         />
     );
   };
-  
+
   return Wrapper;
 };
 
-const CartDropdown = ({ cartItems, history }) => {
+const CartDropdown = ({ cartItems, history, dispatch }) => {
   return (
     <div className='cart-dropdown'>
       <div className='cart-items'>
 
         {
           cartItems.length ?
-          cartItems.map(i => 
+          cartItems.map(i =>
             <CartItem key={i.id} item={i}/>
           )
           :
@@ -44,7 +43,11 @@ const CartDropdown = ({ cartItems, history }) => {
         }
 
       </div>
-      <CustomButton onClick={() => history('/checkout')}>
+      <CustomButton onClick={() => {
+        history('/checkout')
+        dispatch(toggleCartHidden())
+      }
+      }>
         GO TO CHECKOUT
       </CustomButton>
     </div>

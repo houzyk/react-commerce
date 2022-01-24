@@ -1,6 +1,9 @@
 // redux
 import { connect } from "react-redux";
 import { selectCartItems } from "../../redux/cart/cart.selectors";
+import { useNavigate } from "react-router-dom";
+
+
 
 import React from 'react';
 
@@ -11,7 +14,22 @@ import CartItem from '../cart-item/cart-item.component';
 // css
 import './cart-dropdown.styles.scss';
 
-const CartDropdown = ({ cartItems }) => {
+export const withRouter = (Component) => {
+  const Wrapper = (props) => {
+    const history = useNavigate();
+    
+    return (
+      <Component
+        history={history}
+        {...props}
+        />
+    );
+  };
+  
+  return Wrapper;
+};
+
+const CartDropdown = ({ cartItems, history }) => {
   return (
     <div className='cart-dropdown'>
       <div className='cart-items'>
@@ -26,7 +44,7 @@ const CartDropdown = ({ cartItems }) => {
         }
 
       </div>
-      <CustomButton>
+      <CustomButton onClick={() => history('/checkout')}>
         GO TO CHECKOUT
       </CustomButton>
     </div>
@@ -41,4 +59,4 @@ const mapStateToProps = (state) => {
   );
 }
 
-export default connect(mapStateToProps)(CartDropdown);
+export default withRouter(connect(mapStateToProps)(CartDropdown));

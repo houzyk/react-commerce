@@ -53,7 +53,7 @@ class App extends Component {
         <Header/>
         <Routes>
           <Route exact path='/' element={<HomePage />} />
-          <Route exact path='/shop' element={<ShopPage />} />
+          <Route path='/shop' element={<ShopPage />} />
           <Route exact path='/signin' element={<SignInUp />} />
           <Route exact path='/checkout' element={<CheckoutPage />} />
         </Routes>

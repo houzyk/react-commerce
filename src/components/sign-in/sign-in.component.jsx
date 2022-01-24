@@ -25,18 +25,18 @@ class SignIn extends Component {
     }
 
     handleSubmit = async (e) => {
-      e.preventDefault();
-      const { email, password } = this.state;
+        e.preventDefault();
+        const { email, password } = this.state;
 
-      try {
-        await auth.signInWithEmailAndPassword(email, password);
-        this.setState({
-          email:'',
-          password:''
-        });
-      } catch (error) {
-        console.error(error);
-      }
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({
+            email:'',
+            password:''
+            });
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     render () {
@@ -67,18 +67,18 @@ class SignIn extends Component {
                         required
                     />
                     <div className="button">
-                      <CustomButton
-                          type="submit"
-                      >
-                          SIGN IN
-                      </CustomButton>
-                      <CustomButton
-                          type="submit"
-                          onClick={signInWithGoogle}
-                          isGoogleSignIn
-                      >
-                          SIGN IN WITH GOOGLE
-                      </CustomButton>
+                        <CustomButton
+                            type="submit"
+                        >
+                            SIGN IN
+                        </CustomButton>
+                        <CustomButton
+                            type="submit"
+                            onClick={signInWithGoogle}
+                            isGoogleSignIn
+                        >
+                            SIGN IN WITH GOOGLE
+                        </CustomButton>
                     </div>
                 </form>
             </div>
